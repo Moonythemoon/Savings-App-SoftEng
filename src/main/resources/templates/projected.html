@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Projected Investment</title>
+</head>
+<body>
+<h1>Projected Investment for Customer: <span th:text="${saving.customerName}"></span></h1>
+<table>
+    <tr>
+        <th>Year</th>
+        <th>Interest</th>
+        <th>Total</th>
+    </tr>
+    <tr th:each="year : ${#numbers.sequence(1, saving.numberOfYears)}">
+        <td th:text="${year}"></td>
+        <td th:text="${saving.initialDeposit * (saving.savingsType == 'Regular' ? 0.10 : 0.15)}"></td>
+        <td th:text="${saving.initialDeposit + (saving.initialDeposit * (saving.savingsType == 'Regular' ? 0.10 : 0.15) * year)}"></td>
+    </tr>
+</table>
+<a href="/">Back</a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Savings</title>
+</head>
+<body>
+<h1>Savings</h1>
+<table>
+    <tr>
+        <th>Customer Number</th>
+        <th>Customer Name</th>
+        <th>Initial Deposit</th>
+        <th>Number of Years</th>
+        <th>Savings Type</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="saving : ${savings}">
+        <td th:text="${saving.customerNumber}"></td>
+        <td th:text="${saving.customerName}"></td>
+        <td th:text="${saving.initialDeposit}"></td>
+        <td th:text="${saving.numberOfYears}"></td>
+        <td th:text="${saving.savingsType}"></td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${saving.id})}">Edit</a>
+            <a th:href="@{/delete/{id}(id=${saving.id})}">Delete</a>
+            <a th:href="@{/projected/{id}(id=${saving.id})}">Projected Investment</a>
+        </td>
+    </tr>
+</table>
+<a href="/add">Add New</a>
+</body>
+</html>

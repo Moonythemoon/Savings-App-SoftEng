@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Saving</title>
+</head>
+<body>
+<h1>Add Saving</h1>
+<form th:action="@{/add}" th:object="${saving}" method="post">
+  <label>Customer Number:</label>
+  <input type="text" th:field="*{customerNumber}" /><br/>
+  <label>Customer Name:</label>
+  <input type="text" th:field="*{customerName}" /><br/>
+  <label>Initial Deposit:</label>
+  <input type="text" th:field="*{initialDeposit}" /><br/>
+  <label>Number of Years:</label>
+  <input type="text" th:field="*{numberOfYears}" /><br/>
+  <label>Savings Type:</label>
+  <select th:field="*{savingsType}">
+    <option value="Regular">Regular</option>
+    <option value="De-luxe">De-luxe</option>
+  </select><br/>
+  <button type="submit">Submit</button>
+</form>
+<p th:text="${error}"></p>
+<a href="/">Back</a>
+</body>
+</html>

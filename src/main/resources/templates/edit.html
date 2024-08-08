@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Saving</title>
+</head>
+<body>
+<h1>Edit Saving</h1>
+<form th:action="@{/edit/{id}(id=${saving.id})}" th:object="${saving}" method="post">
+    <label>Customer Number:</label>
+    <input type="text" th:field="*{customerNumber}" readonly="readonly"/><br/>
+    <label>Customer Name:</label>
+    <input type="text" th:field="*{customerName}" /><br/>
+    <label>Initial Deposit:</label>
+    <input type="text" th:field="*{initialDeposit}" /><br/>
+    <label>Number of Years:</label>
+    <input type="text" th:field="*{numberOfYears}" /><br/>
+    <label>Savings Type:</label>
+    <select th:field="*{savingsType}">
+        <option value="Regular" th:selected="${saving.savingsType == 'Regular'}">Regular</option>
+        <option value="De-luxe" th:selected="${saving.savingsType == 'De-luxe'}">De-luxe</option>
+    </select><br/>
+    <button type="submit">Submit</button>
+</form>
+<a href="/">Back</a>
+</body>
+</html>
